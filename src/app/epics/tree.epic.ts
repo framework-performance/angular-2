@@ -49,7 +49,7 @@ export class TreeEpic {
         })
       );
 
-  protected updateNodeValue(nodes: Array<INode>, indexPath: Array<number>, value: string) : Array<INode>{
+  protected updateNodeValue(nodes: Array<INode>, indexPath: Array<number>, value: string): Array<INode> {
     return nodes.map((node, nodeIndex) => {
       if (nodeIndex == indexPath[0]) {
         indexPath.shift();

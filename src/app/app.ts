@@ -4,15 +4,12 @@ import {IAppState, ROOT_REDUCER} from "./store/index";
 import {createEpicMiddleware, combineEpics} from 'redux-observable';
 import {TreeEpic} from "./epics/tree.epic";
 
-
 @Component({
   selector: 'app-root',
   template: `
-            <h1>
-              Angular Performance Demo
-            </h1>
-            <ngrx-admin></ngrx-admin>
-            <router-outlet></router-outlet>
+          <ngrx-header></ngrx-header>
+          <ngrx-admin></ngrx-admin>
+          <router-outlet></router-outlet>
   `
 
 })

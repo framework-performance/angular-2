@@ -1,28 +1,33 @@
-import {Component, Input, Output, EventEmitter, ChangeDetectionStrategy} from '@angular/core';
+import {Component, Input, Output, EventEmitter} from '@angular/core';
 import {INode} from "../../models/node.models";
 
 @Component({
-  selector: 'ngrx-tree',
+  selector: 'ngrx-tree-track',
   template: `
       <ul>
-        <li *ngFor="let node of nodes;let index = index">
+        <li *ngFor="let node of nodes;let index = index;trackBy: trackNode">
               <ngrx-node
                   (onSelectNode)="selectNode($event,index)" 
                   [node]="node"></ngrx-node>
-              <ngrx-tree 
+              <ngrx-tree-track
                   (onSelectTreeNode)="selectNode($event,index)" 
-                  [nodes]="node.nodes"></ngrx-tree>
+                  [nodes]="node.nodes"></ngrx-tree-track>
         </li>
       </ul>
   `,
-  styleUrls: ['./tree.component.css'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  styleUrls: ['./tree-track.component.css']
 })
-export class TreeComponent {
+
+
+export class TreeTrackComponent {
   @Input() nodes: Array<INode>;
   @Output() onSelectTreeNode = new EventEmitter();
 
-  selectNode(nodePath = [], index = 0) {
+  trackNode(index): number {
+    return index;
+  }
+
+  selectNode(nodePath = [], index = 0): void {
     this.onSelectTreeNode.emit([...nodePath, index]);
   }
 }

@@ -5,23 +5,30 @@ import {HttpModule} from '@angular/http';
 import {AppComponent} from './app';
 import {NgReduxModule} from 'ng2-redux';
 import {TreeActions} from './actions/tree.action';
-import { BasicPage } from './container/basic/basic.container';
 import {appRoutes} from './routes';
 import {RouterModule} from "@angular/router";
 import {TreeEpic} from "./epics/tree.epic";
-import { TreeComponent } from './components/tree/tree.component';
-import { NodeComponent } from './components/node/node.component';
-import { AdminComponent } from './container/admin/admin.component';
-import { EditNodeComponent } from './components/edit-node/edit-node.component';
+import {TreeComponent} from './components/tree/tree.component';
+import {NodeComponent} from './components/node/node.component';
+import {EditNodeComponent} from './components/edit-node/edit-node.component';
+import {TreeTrackComponent} from './components/tree-track/tree-track.component';
+import {HeaderComponent} from './components/header/header.component';
+
+import {AdminComponent} from './container/admin.component';
+import {SimpleComponent} from './container/basic.container';
+import {TrackComponent} from './container/track.container';
 
 @NgModule({
   declarations: [
     AppComponent,
-    BasicPage,
     TreeComponent,
     NodeComponent,
+    EditNodeComponent,
+    TreeTrackComponent,
+    HeaderComponent,
+    SimpleComponent,
     AdminComponent,
-    EditNodeComponent
+    TrackComponent
   ],
   imports: [
     BrowserModule,
