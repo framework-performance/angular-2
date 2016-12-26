@@ -1,4 +1,4 @@
-import {Component, Input, Output, EventEmitter, ChangeDetectionStrategy} from '@angular/core';
+import {Component, Input, Output, EventEmitter} from '@angular/core';
 import {INode} from "../../models/node.models";
 
 @Component({

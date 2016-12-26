@@ -1,6 +1,6 @@
 import {
   Component, OnInit, Input, Output, EventEmitter, HostBinding, trigger, state, style,
-  transition, animate, OnChanges, keyframes, HostListener, ChangeDetectionStrategy
+  transition, animate, OnChanges, keyframes, HostListener
 } from '@angular/core';
 import {INode} from "../../models/node.models";
 
@@ -25,8 +25,7 @@ import {INode} from "../../models/node.models";
       ])))
     ])
   ],
-  styleUrls: ['./node.component.css'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  styleUrls: ['./node.component.css']
 })
 export class NodeComponent implements OnInit, OnChanges {
   @Input() node: INode = {value: '', nodes: []};

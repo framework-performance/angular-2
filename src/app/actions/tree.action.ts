@@ -1,7 +1,7 @@
 import {NgRedux} from "ng2-redux";
 import {Injectable} from "@angular/core";
 import {IAppState} from "../store/index";
-import {treeFiles} from '../constants/files';
+import {treeFiles} from '../constants/tree-files';
 
 @Injectable()
 export class TreeActions {

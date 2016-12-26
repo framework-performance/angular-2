@@ -2,14 +2,14 @@ import {Component, OnInit} from '@angular/core';
 import {select} from "ng2-redux";
 import {INode} from "../models/node.models";
 import {TreeActions} from "../actions/tree.action";
-import {treeFiles} from '../constants/files';
+import {treeFiles} from '../constants/tree-files';
 
 @Component({
   selector: 'ngrx-admin',
   template: `<select (change)="onChangeFile($event.target.value)" >
                    <option [value]="file" *ngFor="let file of files">{{file}}</option>
               </select>
-
+              Nodes: {{ nodesCount$ | async }}
               <ngrx-edit-node 
               *ngIf="node$ | async"
               (onUpdateNode)="updateNodeValue($event)" 
@@ -18,7 +18,7 @@ import {treeFiles} from '../constants/files';
 })
 export class AdminComponent implements OnInit {
   @select(['tree', 'selectedNode']) node$: INode;
-  @select(['tree', 'treeFile']) treeFile$: INode;
+  @select(['tree', 'nodesCount']) nodesCount$: INode;
 
   constructor(private treeActions: TreeActions) {
   }

@@ -4,6 +4,7 @@ import {INode} from '../models';
 
 interface ITreeStore {
   nodes: Array<INode>,
+  nodesCount : number,
   selectedNodePath: Array<number>;
   selectedNode: INode;
   treeFile: string;
@@ -12,6 +13,7 @@ interface ITreeStore {
 
 const INITIAL_STATE: ITreeStore = {
   nodes: [],
+  nodesCount: 0,
   selectedNodePath: [],
   selectedNode: null,
   treeFile: '',
@@ -24,7 +26,12 @@ const treeStore = (state: ITreeStore = INITIAL_STATE,
     case TreeActions.LOAD_NODES:
       return Object.assign({}, INITIAL_STATE, {treeFile: payload.file});
     case TreeActions.SET_NODES:
-      return Object.assign({}, state, {nodes: payload.nodes, showAnimation: payload.showAnimation});
+      return Object.assign({}, state, {
+        nodes: payload.nodes,
+        showAnimation: payload.showAnimation,
+        nodesCount: payload.nodesCount
+
+      });
     case TreeActions.SET_SELECTED_NODE_PATH:
       return Object.assign({}, state, {selectedNodePath: payload.selectedNodePath});
     case TreeActions.SET_SELECTED_NODE:

@@ -4,7 +4,7 @@ import {Injectable} from "@angular/core";
 import 'rxjs';
 import {ActionsObservable} from "redux-observable";
 import {INode} from "../models/node.models";
-import {treeFiles} from '../constants/files';
+import {treeFiles} from '../constants/tree-files';
 
 @Injectable()
 export class TreeEpic {
@@ -20,6 +20,7 @@ export class TreeEpic {
             type: TreeActions.SET_NODES,
             payload: {
               nodes: nodes,
+              nodesCount: this.getNodesCountForType(payload.file),
               showAnimation: this.showAnimationForTree(payload.file)
             }
           }))
@@ -55,19 +56,34 @@ export class TreeEpic {
       );
 
   protected showAnimationForTree(type): boolean {
-    if (type === 'small') {
+    if (this.getNodesCountForType(type) < 1000) {
       return true;
     }
     return false;
   }
 
   protected getFileForType(type: string = ''): string {
+    try {
+      return this.getTreeFileObject(type).file;
+    } catch (error) {
+      console.error('load tree.json failed', error);
+    }
+  }
+
+  protected getNodesCountForType(type: string = ''): number {
+    try {
+      return this.getTreeFileObject(type).nodes;
+    } catch (error) {
+      console.error('load tree.json failed', error);
+    }
+  }
+
+  protected getTreeFileObject(type: string = ''): {file: string, nodes: number} {
     if (!type) {
-      throw new Error('load tree.json failed, type is empty');
+      throw new Error('type is empty');
     }
     if (!treeFiles[type]) {
-      throw new Error('load tree.json failed, type ' + type + ' is not defined');
-
+      throw new Error('type ' + type + ' is not defined');
     }
     return treeFiles[type];
   }
