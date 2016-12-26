@@ -7,7 +7,7 @@ import {INode} from "../../models/node.models";
 @Component({
   selector: 'ngrx-node',
   template: `
-      <div >{{text}}</div>
+      <div class="node">{{text}}</div>
   `,
   animations: [
     trigger('nodeAnimation', [
