@@ -7,11 +7,14 @@ import {INode} from "../../models/node.models";
       <ul>
         <li *ngFor="let node of nodes;let index = index">
               <ngrx-node
-                  (onSelectNode)="selectNode($event,index)" 
-                  [node]="node"></ngrx-node>
-              <ngrx-tree 
+                  [showAnimation]="showAnimation"
+                  [node]="node"
+                  (onSelectNode)="selectNode($event,index)"></ngrx-node>
+              <ngrx-tree *ngIf="node.nodes.length > 0"
+                  [showAnimation]="showAnimation"
+                  [nodes]="node.nodes"
                   (onSelectTreeNode)="selectNode($event,index)" 
-                  [nodes]="node.nodes"></ngrx-tree>
+                  ></ngrx-tree>
         </li>
       </ul>
   `,
@@ -20,6 +23,7 @@ import {INode} from "../../models/node.models";
 })
 export class TreeComponent {
   @Input() nodes: Array<INode>;
+  @Input() showAnimation : boolean;
   @Output() onSelectTreeNode = new EventEmitter();
 
   selectNode(nodePath = [], index = 0) {

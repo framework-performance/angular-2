@@ -7,20 +7,20 @@ import {INode} from "../models/node.models";
   selector: 'ngrx-fast',
   template: `
             <h3>Fast Example</h3>
-            <ngrx-tree-fast (onSelectTreeNode)="setNode($event)" [nodes]="nodes$ | async"></ngrx-tree-fast>`
+            <ngrx-tree-fast 
+              [showAnimation]="showAnimation$ | async"
+              [nodes]="nodes$ | async"
+              (onSelectTreeNode)="setNode($event)"></ngrx-tree-fast>`
 })
-export class FastComponent implements OnInit {
-  @select(['tree','nodes']) nodes$: INode;
+export class FastComponent {
+  @select(['tree', 'nodes']) nodes$: INode;
+  @select(['tree', 'showAnimation']) showAnimation$: boolean;
 
   constructor(private treeActions: TreeActions) {
   }
 
-  setNode (path: Array<number>) {
+  setNode(path: Array<number>) : void{
     this.treeActions.setSelectedNodePath(path);
-  }
-
-  ngOnInit() {
-    this.treeActions.load();
   }
 
 }

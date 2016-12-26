@@ -1,6 +1,6 @@
 import {
   Component, OnInit, Input, Output, EventEmitter, HostBinding, trigger, state, style,
-  transition, animate, OnChanges, keyframes, HostListener
+  transition, animate, OnChanges, keyframes, HostListener, ChangeDetectionStrategy
 } from '@angular/core';
 import {INode} from "../../models/node.models";
 
@@ -19,19 +19,19 @@ import {INode} from "../../models/node.models";
         }),
         animate('0.6s ease-in')
       ]),
-      transition('* => change', animate(1000, keyframes([
+      transition('* => change', animate(100, keyframes([
         style({backgroundColor: 'green', offset: 0.8}),
         style({backgroundColor: '*', offset: 0.9})
       ])))
     ])
   ],
   styleUrls: ['./node.component.css'],
-  //changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class NodeComponent implements OnInit, OnChanges {
-  @Input() node: INode = {value: ''};
+  @Input() node: INode = {value: '', nodes: []};
   @Input() value: string;
-
+  @Input() showAnimation: boolean;
   @Output() onSelectNode = new EventEmitter();
   @HostBinding('style.display') styleDisplay: string = 'block';
   @HostBinding('@nodeAnimation') nodeAnimation: string = '';
@@ -49,11 +49,18 @@ export class NodeComponent implements OnInit, OnChanges {
     return this.value || this.node.value;
   }
 
+  setAnimationState(state: 'init' | 'change'): void {
+    if (!this.showAnimation) {
+      return;
+    }
+    this.nodeAnimation = state;
+  }
+
   ngOnInit(): void {
-    this.nodeAnimation = 'init';
+    this.setAnimationState('init')
   }
 
   ngOnChanges(): void {
-    this.nodeAnimation = 'change';
+    this.setAnimationState('change')
   }
 }

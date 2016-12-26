@@ -7,11 +7,13 @@ import {INode} from "../../models/node.models";
       <ul>
         <li *ngFor="let node of nodes;let index = index;trackBy: trackNode">
               <ngrx-node
-                  (onSelectNode)="selectNode($event,index)" 
-                  [value]="node.value"></ngrx-node>
+                  [showAnimation]="showAnimation"
+                  [value]="node.value"
+                  (onSelectNode)="selectNode($event,index)"></ngrx-node>
               <ngrx-tree-fast *ngIf="node.nodes.length > 0"
-                  (onSelectTreeNode)="selectNode($event,index)" 
-                  [nodes]="node.nodes"></ngrx-tree-fast>
+                  [showAnimation]="showAnimation"
+                  [nodes]="node.nodes"
+                  (onSelectTreeNode)="selectNode($event,index)"></ngrx-tree-fast>
         </li>
       </ul>
   `,
@@ -21,6 +23,7 @@ import {INode} from "../../models/node.models";
 
 export class TreeFastComponent {
   @Input() nodes: Array<INode>;
+  @Input() showAnimation: boolean;
   @Output() onSelectTreeNode = new EventEmitter();
 
   trackNode(index): number {

@@ -6,21 +6,25 @@ import {INode} from "../../models/node.models";
   template: `
       <ul>
         <li *ngFor="let node of nodes;let index = index;trackBy: trackNode">
-              <ngrx-node
-                  (onSelectNode)="selectNode($event,index)" 
-                  [node]="node"></ngrx-node>
+              <ngrx-node 
+                  [showAnimation]="showAnimation"
+                  [node]="node"
+                  (onSelectNode)="selectNode($event,index)"></ngrx-node>
               <ngrx-tree-track *ngIf="node.nodes.length > 0"
-                  (onSelectTreeNode)="selectNode($event,index)" 
-                  [nodes]="node.nodes"></ngrx-tree-track>
+                  [showAnimation]="showAnimation"
+                  [nodes]="node.nodes"
+                  (onSelectTreeNode)="selectNode($event,index)"></ngrx-tree-track>
         </li>
       </ul>
   `,
-  styleUrls: ['./tree-track.component.css']
+  styleUrls: ['./tree-track.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 
 
 export class TreeTrackComponent {
   @Input() nodes: Array<INode>;
+  @Input() showAnimation : boolean;
   @Output() onSelectTreeNode = new EventEmitter();
 
   trackNode(index): number {

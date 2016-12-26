@@ -5,7 +5,7 @@ import {INode} from "../../models/node.models";
   selector: 'ngrx-edit-node',
   template: `
       <div class="editor">
-          <h3>Edit Node</h3>
+          <h4>edit Node</h4>
           <input [ngModel]="node.value" (ngModelChange)="updateNodeValue($event)">
       </div>
   `,

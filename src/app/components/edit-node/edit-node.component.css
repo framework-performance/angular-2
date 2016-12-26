@@ -1,9 +1,8 @@
 .editor {
   position: fixed;
-  border:1px solid black;
   bottom: 0;
   width:100%;
-  padding:10px;
+  padding-bottom: 20px;
   text-align: center;
   background: linear-gradient(to bottom, #1e5799 0%,#2989d8 50%,#7db9e8 100%);
 }

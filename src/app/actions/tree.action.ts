@@ -1,6 +1,7 @@
 import {NgRedux} from "ng2-redux";
 import {Injectable} from "@angular/core";
 import {IAppState} from "../store/index";
+import {treeFiles} from '../constants/files';
 
 @Injectable()
 export class TreeActions {
@@ -17,9 +18,10 @@ export class TreeActions {
   constructor(private ngRedux: NgRedux<IAppState>) {
   }
 
-  public load(): void {
+  public load(file: string = Object.keys(treeFiles)[0]): void {
     this.ngRedux.dispatch({
-      type: TreeActions.LOAD_NODES
+      type: TreeActions.LOAD_NODES,
+      payload: {file}
     });
   }
 
