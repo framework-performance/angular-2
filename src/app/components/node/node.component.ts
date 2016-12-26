@@ -1,6 +1,6 @@
 import {
   Component, OnInit, Input, Output, EventEmitter, HostBinding, trigger, state, style,
-  transition, animate, OnChanges, ChangeDetectionStrategy, keyframes, HostListener
+  transition, animate, OnChanges, keyframes, HostListener
 } from '@angular/core';
 import {INode} from "../../models/node.models";
 
@@ -8,7 +8,6 @@ import {INode} from "../../models/node.models";
   selector: 'ngrx-node',
   template: `
       <div >{{text}}</div>
-      <div click="add()"></div>
   `,
   animations: [
     trigger('nodeAnimation', [
@@ -26,10 +25,12 @@ import {INode} from "../../models/node.models";
       ])))
     ])
   ],
-  styleUrls: ['./node.component.css']
+  styleUrls: ['./node.component.css'],
+  //changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class NodeComponent implements OnInit, OnChanges {
-  @Input() node: INode;
+  @Input() node: INode = {value: ''};
+  @Input() value: string;
 
   @Output() onSelectNode = new EventEmitter();
   @HostBinding('style.display') styleDisplay: string = 'block';
@@ -45,7 +46,7 @@ export class NodeComponent implements OnInit, OnChanges {
   }
 
   get text(): string {
-    return this.node.value;
+    return this.value || this.node.value;
   }
 
   ngOnInit(): void {

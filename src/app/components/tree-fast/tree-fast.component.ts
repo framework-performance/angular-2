@@ -2,24 +2,24 @@ import {Component, Input, Output, EventEmitter, ChangeDetectionStrategy} from '@
 import {INode} from "../../models/node.models";
 
 @Component({
-  selector: 'ngrx-tree-track',
+  selector: 'ngrx-tree-fast',
   template: `
       <ul>
         <li *ngFor="let node of nodes;let index = index;trackBy: trackNode">
               <ngrx-node
                   (onSelectNode)="selectNode($event,index)" 
-                  [node]="node"></ngrx-node>
-              <ngrx-tree-track *ngIf="node.nodes.length > 0"
+                  [value]="node.value"></ngrx-node>
+              <ngrx-tree-fast *ngIf="node.nodes.length > 0"
                   (onSelectTreeNode)="selectNode($event,index)" 
-                  [nodes]="node.nodes"></ngrx-tree-track>
+                  [nodes]="node.nodes"></ngrx-tree-fast>
         </li>
       </ul>
   `,
-  styleUrls: ['./tree-track.component.css']
+  styleUrls: ['./tree-fast.component.css']
 })
 
 
-export class TreeTrackComponent {
+export class TreeFastComponent {
   @Input() nodes: Array<INode>;
   @Output() onSelectTreeNode = new EventEmitter();
 

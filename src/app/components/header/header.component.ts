@@ -8,6 +8,7 @@ import {Component} from '@angular/core';
               <nav>
                 <a routerLink="simple" routerLinkActive="active">Basic Example</a>
                 <a routerLink="track" routerLinkActive="active">track</a>
+                <a routerLink="fast" routerLinkActive="active">fast</a>
               </nav>
             `,
   styleUrls: ['./header.component.css']

@@ -12,11 +12,13 @@ import {TreeComponent} from './components/tree/tree.component';
 import {NodeComponent} from './components/node/node.component';
 import {EditNodeComponent} from './components/edit-node/edit-node.component';
 import {TreeTrackComponent} from './components/tree-track/tree-track.component';
+import {TreeFastComponent} from './components/tree-fast/tree-fast.component';
 import {HeaderComponent} from './components/header/header.component';
 
 import {AdminComponent} from './container/admin.component';
 import {SimpleComponent} from './container/basic.container';
 import {TrackComponent} from './container/track.container';
+import {FastComponent} from './container/fast.container';
 
 @NgModule({
   declarations: [
@@ -25,10 +27,12 @@ import {TrackComponent} from './container/track.container';
     NodeComponent,
     EditNodeComponent,
     TreeTrackComponent,
+    TreeFastComponent,
     HeaderComponent,
     SimpleComponent,
     AdminComponent,
-    TrackComponent
+    TrackComponent,
+    FastComponent
   ],
   imports: [
     BrowserModule,

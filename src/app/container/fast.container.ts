@@ -7,7 +7,7 @@ import {INode} from "../models/node.models";
   selector: 'ngrx-fast',
   template: `
             <h3>Fast Example</h3>
-            <ngrx-fast-tree (onSelectTreeNode)="setNode($event)" [nodes]="nodes$ | async"></ngrx-fast-tree>`
+            <ngrx-tree-fast (onSelectTreeNode)="setNode($event)" [nodes]="nodes$ | async"></ngrx-tree-fast>`
 })
 export class FastComponent implements OnInit {
   @select(['tree','nodes']) nodes$: INode;
