@@ -3,6 +3,7 @@ import {NgRedux, DevToolsExtension} from "ng2-redux";
 import {IAppState, ROOT_REDUCER} from "./store/index";
 import {createEpicMiddleware, combineEpics} from 'redux-observable';
 import {TreeEpic} from "./epics/tree.epic";
+import {environment} from '../environments/environment';
 
 @Component({
   selector: 'app-root',
@@ -18,7 +19,10 @@ export class AppComponent {
   constructor(ngRedux: NgRedux<IAppState>,
               devTools: DevToolsExtension,
               treeEpic: TreeEpic) {
-
+    let enhancers = [];
+    if (!environment.production) {
+      enhancers.push(devTools.enhancer());
+    }
     ngRedux.configureStore(
       ROOT_REDUCER,
       {},
@@ -29,7 +33,7 @@ export class AppComponent {
           treeEpic.updateNode
         )
       )],
-      [devTools.enhancer()]
+      enhancers
     );
   }
 
