@@ -13,6 +13,14 @@
     "e2e": "protractor",
     "release": "standard-version"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/framework-performance/angular-2"
+  },
+  "keywords": [
+    "angular",
+    "redux"
+  ],
   "private": false,
   "dependencies": {
     "@angular/common": "2.4.0",
