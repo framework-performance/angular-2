@@ -6,13 +6,12 @@ import {INode} from "../models/node.models";
 @Component({
   selector: 'ngrx-simple',
   template: `
-            <h3>Simple Example</h3>
             <ngrx-tree
               [showAnimation]="showAnimation$ | async" 
               [nodes]="nodes$ | async"
               (onSelectTreeNode)="setNode($event)" ></ngrx-tree>`
 })
-export class SimpleComponent {
+export class SlowComponent {
   @select(['tree', 'nodes']) nodes$: INode;
   @select(['tree', 'showAnimation']) showAnimation$: boolean;
 

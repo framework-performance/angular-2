@@ -6,7 +6,6 @@ import {INode} from "../models/node.models";
 @Component({
   selector: 'ngrx-track',
   template: `
-            <h3>Track Example</h3>
             <ngrx-tree-track  
               [showAnimation]="showAnimation$ | async"
               [nodes]="nodes$ | async"

@@ -6,7 +6,6 @@ import {INode} from "../models/node.models";
 @Component({
   selector: 'ngrx-fast',
   template: `
-            <h3>Fast Example</h3>
             <ngrx-tree-fast 
               [showAnimation]="showAnimation$ | async"
               [nodes]="nodes$ | async"

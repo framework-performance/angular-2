@@ -6,10 +6,16 @@ import {treeFiles} from '../constants/tree-files';
 
 @Component({
   selector: 'ngrx-admin',
-  template: `<select (change)="onChangeFile($event.target.value)" >
+  template: ` <select (change)="onChangeFile($event.target.value)" >
+                    <option [value]="" >Select Tree Size</option>
                    <option [value]="file" *ngFor="let file of files">{{file}}</option>
               </select>
-              Nodes: {{ nodesCount$ | async }}
+              <p>
+                Nodes: {{ nodesCount$ | async }}
+              </p>
+              <p>
+                click on Node for edit
+              </p>
               <ngrx-edit-node 
               *ngIf="node$ | async"
               (onUpdateNode)="updateNodeValue($event)" 

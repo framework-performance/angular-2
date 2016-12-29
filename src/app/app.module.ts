@@ -16,7 +16,7 @@ import {TreeFastComponent} from './components/tree-fast/tree-fast.component';
 import {HeaderComponent} from './components/header/header.component';
 
 import {AdminComponent} from './container/admin.component';
-import {SimpleComponent} from './container/basic.container';
+import {SlowComponent} from './container/slow.container';
 import {TrackComponent} from './container/track.container';
 import {FastComponent} from './container/fast.container';
 
@@ -29,7 +29,7 @@ import {FastComponent} from './container/fast.container';
     TreeTrackComponent,
     TreeFastComponent,
     HeaderComponent,
-    SimpleComponent,
+    SlowComponent,
     AdminComponent,
     TrackComponent,
     FastComponent
