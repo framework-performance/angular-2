@@ -13,7 +13,7 @@
     "e2e": "protractor",
     "release": "standard-version"
   },
-  "private": true,
+  "private": false,
   "dependencies": {
     "@angular/common": "2.4.0",
     "@angular/compiler": "2.4.0",

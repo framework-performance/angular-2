@@ -7,6 +7,8 @@ node_js:
   - "node"
 before_install:
   - npm i -g makeshift && makeshift -s @bcoe -r https://registry.npmjs.org
+  - npm install -g yarn --cache-min 999999999
+
 install:
     - yarn install
 script:
