@@ -39,7 +39,7 @@ import {FastComponent} from './container/fast.container';
     FormsModule,
     HttpModule,
     NgReduxModule.forRoot(),
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes, { useHash: true })
   ],
   providers: [
     TreeActions,
