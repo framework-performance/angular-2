@@ -3,6 +3,10 @@ node_js:
   - "node"
 before_install:
   - npm i -g makeshift && makeshift -s @bcoe -r https://registry.npmjs.org
+install:
+    - npm install --no-optional
+script:
+    - npm run build-production
 deploy:
   provider: npm
   email: larswiedemann@gmx.net
