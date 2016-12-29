@@ -1,5 +1,5 @@
 {
-  "name": "@framework-performance/angular",
+  "name": "performance-angular",
   "version": "0.0.2",
   "license": "MIT",
   "angular-cli": {},
