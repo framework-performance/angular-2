@@ -1,10 +1,14 @@
 language: node_js
+cache:
+  yarn: true
+  directories:
+    - node_modules
 node_js:
   - "node"
 before_install:
   - npm i -g makeshift && makeshift -s @bcoe -r https://registry.npmjs.org
 install:
-    - npm install --no-optional
+    - yarn install
 script:
     - npm run build-production
 deploy:
