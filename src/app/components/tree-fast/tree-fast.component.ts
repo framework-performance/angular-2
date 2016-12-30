@@ -1,4 +1,4 @@
-import {Component, Input, Output, EventEmitter} from '@angular/core';
+import {Component, Input, Output, EventEmitter, ChangeDetectionStrategy} from '@angular/core';
 import {INode} from "../../models/node.models";
 
 @Component({
@@ -17,7 +17,8 @@ import {INode} from "../../models/node.models";
         </li>
       </ul>
   `,
-  styleUrls: ['./tree-fast.component.css']
+  styleUrls: ['./tree-fast.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 
 

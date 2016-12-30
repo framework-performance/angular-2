@@ -1,4 +1,4 @@
-import {Component, Input, Output, EventEmitter, ChangeDetectionStrategy} from '@angular/core';
+import {Component, Input, Output, EventEmitter, ChangeDetectionStrategy, ChangeDetectorRef} from '@angular/core';
 import {INode} from "../../models/node.models";
 
 @Component({
@@ -25,7 +25,13 @@ export class TreeComponent {
   @Input() nodes: Array<INode>;
   @Input() showAnimation : boolean;
   @Output() onSelectTreeNode = new EventEmitter();
+constructor(ref: ChangeDetectorRef) {
+  ref.checkNoChanges();
+}
 
+ngOnChanges () {
+  console.log('OK');
+}
   selectNode(nodePath = [], index = 0) {
     this.onSelectTreeNode.emit([...nodePath, index]);
   }
